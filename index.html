@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leynar — Kotlin Dev, Minecraft Plugins</title>
+  <meta name="description" content="Leynar — разработчик Minecraft плагинов на Kotlin, со-владелец Vesperia SMP.">
+  <meta property="og:title" content="Leynar">
+  <meta property="og:description" content="Kotlin Developer, Minecraft Plugin Dev, со-владелец Vesperia SMP">
+  <meta property="og:image" content="assets/img/avatar.png">
+  <link rel="icon" href="assets/img/avatar.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Press+Start+2P&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Entrance -->
+  <div id="entrance">
+    <!-- Orbs -->
+    <div class="e-orb" style="--x:20%;--y:25%;--s:45vmax;--c:rgba(124,92,255,0.05);--d:14s"></div>
+    <div class="e-orb" style="--x:75%;--y:55%;--s:35vmax;--c:rgba(255,92,168,0.04);--d:18s"></div>
+    <div class="e-orb" style="--x:50%;--y:75%;--s:50vmax;--c:rgba(184,160,255,0.03);--d:22s"></div>
+    <div class="e-orb" style="--x:85%;--y:20%;--s:30vmax;--c:rgba(124,92,255,0.03);--d:16s"></div>
+    <!-- Particle canvas -->
+    <canvas id="e-particles"></canvas>
+    <!-- Scanline -->
+    <div class="e-scan"></div>
+    <!-- Text -->
+    <div class="entrance-row">
+      <span class="e-ltr" style="--i:0">L</span>
+      <span class="e-ltr" style="--i:1">e</span>
+      <span class="e-ltr" style="--i:2">y</span>
+      <span class="e-ltr" style="--i:3">n</span>
+      <span class="e-ltr" style="--i:4">a</span>
+      <span class="e-ltr" style="--i:5">r</span>
+    </div>
+    <div class="e-sub-wrap">
+      <div class="e-paw">
+        <svg viewBox="0 0 24 22" fill="currentColor">
+          <ellipse cx="12" cy="17" rx="6.5" ry="5"/>
+          <ellipse cx="4.5" cy="7" rx="2.8" ry="3.5" transform="rotate(-18,4.5,7)"/>
+          <ellipse cx="9.5" cy="3.5" rx="2.3" ry="3.2"/>
+          <ellipse cx="14.5" cy="3.5" rx="2.3" ry="3.2"/>
+          <ellipse cx="19.5" cy="7" rx="2.8" ry="3.5" transform="rotate(18,19.5,7)"/>
+        </svg>
+      </div>
+      <div class="e-sub">FURRY!</div>
+    </div>
+    <!-- Loading bar -->
+    <div class="e-bar"></div>
+    <!-- Click to continue -->
+    <div class="e-continue">
+      <span>Нажмите чтобы продолжить</span>
+    </div>
+  </div>
+
+  <!-- BG particles -->
+  <canvas id="bg-particles"></canvas>
+
+  <!-- Paw cursor -->
+  <div id="paw-cursor">
+    <svg viewBox="0 0 24 22" fill="currentColor">
+      <ellipse cx="12" cy="17" rx="6.5" ry="5"/>
+      <ellipse cx="4.5" cy="7" rx="2.8" ry="3.5" transform="rotate(-18,4.5,7)"/>
+      <ellipse cx="9.5" cy="3.5" rx="2.3" ry="3.2"/>
+      <ellipse cx="14.5" cy="3.5" rx="2.3" ry="3.2"/>
+      <ellipse cx="19.5" cy="7" rx="2.8" ry="3.5" transform="rotate(18,19.5,7)"/>
+    </svg>
+  </div>
+
+  <!-- Site content -->
+  <div class="site" id="site">
+    <canvas id="equalizer"></canvas>
+    <div class="site-inner">
+      <div class="term">
+        <span class="prompt">[~]$</span>
+        <span class="cmd">whoami</span>
+        <span class="separator"></span>
+        <span class="status">
+          <span class="status-dot"></span>
+          online
+        </span>
+      </div>
+
+      <div class="hero-row stagger">
+        <div class="avatar-frame">
+          <img src="assets/img/avatar.png" alt="Leynar">
+        </div>
+        <div class="hero-text">
+          <h1 class="hero-name">Leynar</h1>
+          <div class="sub">
+            Kotlin Developer &bull; Minecraft Plugin Dev<br>
+            Со-владелец <em>Vesperia SMP</em>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-block stagger">
+        <div class="term">
+          <span class="prompt">~/about $</span>
+          <span class="cmd">cat me.txt</span>
+        </div>
+        <p>Приветики! Я Рома, мне 14, пишу свои плагины для minecraft серверов. Работаю на Kotlin, Paper 1.21+. Люблю не спать по ночам. Со-владелец Vesperia.</p>
+        <div class="about-kawaii">&gt;w&lt;</div>
+      </div>
+
+      <div class="about-block stagger">
+        <div class="term">
+          <span class="prompt">~/skills $</span>
+          <span class="cmd">ls -l</span>
+        </div>
+        <div class="skills-row">
+          <span class="skill-tag">Kotlin</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">Paper/Spigot</span>
+          <span class="skill-tag">Plugin Dev</span>
+          <span class="skill-tag">Minecraft</span>
+          <span class="skill-tag">PostgreSQL</span>
+        </div>
+      </div>
+
+      <div class="about-block stagger">
+        <div class="term">
+          <span class="prompt">~/projects $</span>
+          <span class="cmd">ls -la</span>
+        </div>
+        <div class="projects-grid">
+          <div class="proj-card">
+            <h4>Vesperia SMP</h4>
+            <div class="p-meta">Paper API &bull; Kotlin &bull; PostgreSQL</div>
+            <p>Пишу плагины, общаюсь с игроками и в принципе держу на себе больше половины проекта.</p>
+            <a href="https://vesperiasmp.ru/" target="_blank">vesperiasmp.ru &rarr;</a>
+          </div>
+          <div class="proj-card">
+            <h4>Plugin Kit</h4>
+            <div class="p-meta">Kotlin &bull; Paper API</div>
+            <p>Просто Kotlin Developer, ничего особенного.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contacts-section stagger">
+        <div class="term">
+          <span class="prompt">[~]$</span>
+          <span class="cmd">connect</span>
+        </div>
+        <div class="contact-links">
+          <a href="https://discord.com/users/1193949142733565994" target="_blank">&gt; Discord: <span style="color:var(--acc)">r_leynar</span></a>
+          <a href="https://t.me/r_leymar" target="_blank">&gt; Telegram: <span style="color:var(--acc)">@r_leymar</span></a>
+          <a href="https://vesperiasmp.ru/" target="_blank">&gt; Web: <span style="color:var(--acc)">vesperiasmp.ru</span></a>
+        </div>
+        <div class="cta-group">
+          <a href="https://t.me/r_leymar" target="_blank" class="cta cta-primary">Telegram</a>
+          <a href="https://discord.com/users/1193949142733565994" target="_blank" class="cta cta-secondary">Discord</a>
+        </div>
+      </div>
+
+      <!-- Music Player -->
+      <div class="player" id="player">
+        <div class="player-head">
+          <span class="player-label">Сейчас играет</span>
+          <div class="player-controls">
+            <button class="player-skip" id="playerPrev" aria-label="Previous">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,12 18,5 18,19"/></svg>
+            </button>
+            <button class="player-play" id="playerPlay" aria-label="Play/Pause">
+              <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg>
+              <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="5" width="5" height="14" rx="1"/><rect x="13" y="5" width="5" height="14" rx="1"/></svg>
+            </button>
+            <button class="player-skip" id="playerNext" aria-label="Next">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="18,12 6,5 6,19"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="player-track">
+          <div class="player-info">
+            <div class="player-title" id="playerTitle">PASSENGER</div>
+            <div class="player-artist" id="playerArtist">Alex Warren</div>
+          </div>
+          <div class="player-volume-wrap">
+            <svg class="vol-icon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8.5v7a4.49 4.49 0 0 0 2.5-3.5zM14 3.23v2.06a7.007 7.007 0 0 1 0 13.42v2.06A9.01 9.01 0 0 0 14 3.23z"/></svg>
+            <input type="range" class="player-volume" id="playerVolume" min="0" max="100" value="45">
+          </div>
+        </div>
+        <div class="player-progress" id="playerProgress">
+          <div class="player-progress-fill" id="playerProgressFill"></div>
+          <div class="player-progress-thumb" id="playerProgressThumb"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BIO backdrop -->
+  <div class="bio-wrap" aria-hidden="true">
+    <span>B</span><span>I</span><span>O</span>
+  </div>
+
+  <!-- FURRY! backdrop -->
+  <div class="furry-wrap" aria-hidden="true">
+    <span>F</span><span>U</span><span>R</span><span>R</span><span>Y</span><span>!</span>
+  </div>
+
+  <!-- Hidden doge button -->
+  <button class="doge-btn" id="dogeBtn" aria-label="🐶">🐶</button>
+
+  <!-- Doge overlay -->
+  <div class="doge-overlay" id="dogeOverlay">
+    <img src="assets/img/sobaka.jpg" alt="sobaka">
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
